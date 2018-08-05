@@ -15,4 +15,5 @@ GROUP BY
 	TxDelegateVestingShares.delegator,
 	TxDelegateVestingShares.vesting_shares
 	
-//Converting Vest to SP: use 1 VEST = 493.51063924131 SP (as of 8/5/201 10:00 AM from http://www.steemdollar.com/vests.php)
+//Converting Vest to SP: I use (1000000÷Steem per vests)× Steem power = vesting share where
+1 VEST = 493.51063924131 SP (as of 8/5/201 10:00 AM from http://www.steemdollar.com/vests.php)
