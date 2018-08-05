@@ -1,0 +1,21 @@
+//July Report_sql_query
+SELECT
+	MONTH(Comments.created) AS [MONTH],
+	DAY(Comments.created) AS [DAY],
+	COUNT(Comments.permlink) AS [NO_OF_POST],
+	AVG(Comments.net_votes) AS [AVERAGE_NET_VOTES],
+	AVG(Comments.total_payout_value) AS [AVERAGE_PAYOUT],
+	AVG(TxVotes.weight) AS [AVERAGE_VOTE_WEIGHT]
+FROM Comments (NOLOCK)
+	INNER JOIN TxVotes (NOLOCK)
+	ON TxVotes.permlink = Comments.permlink AND
+	TxVotes.author = Comments.author
+WHERE
+	YEAR(Comments.created) = 2018 AND
+	TxVotes.timestamp >= '2018/05/26' AND
+	TxVotes.timestamp < '2018/08/01' AND
+	TxVotes.voter = 'steemph.cebu' AND
+	TxVotes.author != 'steemph.cebu'
+GROUP BY
+	MONTH(Comments.created),
+	DAY(Comments.created)
