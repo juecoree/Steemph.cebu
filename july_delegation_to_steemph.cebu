@@ -14,3 +14,5 @@ GROUP BY
 	DAY(TxDelegateVestingShares.timestamp),
 	TxDelegateVestingShares.delegator,
 	TxDelegateVestingShares.vesting_shares
+	
+//Converting Vest to SP: use 1 VEST = 493.51063924131 SP (as of 8/5/201 10:00 AM from http://www.steemdollar.com/vests.php)
