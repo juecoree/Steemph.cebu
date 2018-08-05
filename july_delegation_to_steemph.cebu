@@ -1,0 +1,16 @@
+SELECT
+	MONTH(TxDelegateVestingShares.timestamp) AS [MONTH],
+	DAY(TxDelegateVestingShares.timestamp) AS [DAY],
+	TxDelegateVestingShares.delegator,
+	TxDelegateVestingShares.vesting_shares
+FROM TxDelegateVestingShares(NOLOCK)
+WHERE
+	YEAR(TxDelegateVestingShares.timestamp) = 2018 AND
+	TxDelegateVestingShares.timestamp >= '2018/05/26' AND
+	TxDelegateVestingShares.timestamp < '2018/08/01' AND
+	TxDelegateVestingShares.delegatee = 'steemph.cebu'
+GROUP BY
+	MONTH(TxDelegateVestingShares.timestamp),
+	DAY(TxDelegateVestingShares.timestamp),
+	TxDelegateVestingShares.delegator,
+	TxDelegateVestingShares.vesting_shares
